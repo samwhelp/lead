@@ -1,3 +1,16 @@
+# lead
+
+## Original Repository
+
+* https://github.com/Almamu/lead
+* https://github.com/mlde/lead
+
+## Fork Change
+
+Please read [ForkChange.md](ForkChange.md).
+
+## Intro
+
 *lead* provides hot-corners for your desktop, notably for openbox, awesome, i3 and other window managers.
 
 This fork adds support for specifying an interval to wait before the action is triggered. There may be more improvements in the future.
@@ -25,15 +38,15 @@ This fork adds support for specifying an interval to wait before the action is t
 
 # Build it
 
-*lead* uses [clang](http://clang.llvm.org/) as compiler, [g++](https://gcc.gnu.org/) as linker and [make](https://www.gnu.org/software/make/) as build-tool. 
+*lead* uses [clang](http://clang.llvm.org/) as compiler, [g++](https://gcc.gnu.org/) as linker and [make](https://www.gnu.org/software/make/) as build-tool.
 
 To build *lead* open a terminal in the root folder of the repository and:
 
     $ make
 
 ### Dependencies
-- Qt5Widgets 
-- Qt5Gui 
+- Qt5Widgets
+- Qt5Gui
 - Qt5Core
 
 

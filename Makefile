@@ -1,9 +1,14 @@
 ######  BUILD  ######
 
-INCLUDES = -Isrc -I/usr/include -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore
+#INCLUDES = -Isrc -I/usr/include -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore
+INCLUDES = -Isrc `pkg-config --cflags Qt5Widgets`
+
 COMPILER = clang -std=c++11 -Wall -O3 -fPIC -MMD $(INCLUDES) -c $< -o $@
 MOC = moc $(INCLUDES) -o $@ $<
-LINKER = g++ -o $@ $^ -lQt5Xdg -lQt5Widgets -lQt5Gui -lQt5Core
+
+#LINKER = g++ -o $@ $^ -lQt5Xdg -lQt5Widgets -lQt5Gui -lQt5Core
+LINKER = g++ -o $@ $^ `pkg-config --libs Qt5Widgets`
+
 MKDIR = mkdir -p $(dir $@)
 
 
@@ -34,20 +39,21 @@ build/moc_%.cpp: src/%.h
 ######  CLEAN  ######
 
 clean:
-	rm -f build/*
-	rm -f data/usr/bin/lead
-
+#	rm -f build/*
+#	rm -f data/usr/bin/lead
+	rm -rf build
+	rm -rf data
+.PHONY: clean
 
 ######  INSTALL  ######
 
-install:
-	cp -r data/* /
-
+install: data/usr/bin/lead
+#	cp -r data/* /
+	install -m 755 data/usr/bin/lead /usr/bin/lead
+.PHONY: install
 
 ######  UNINSTALL  ######
 
 uninstall:
 	rm -f /usr/bin/lead
-
-
-.PHONY: clean install uninstall
+.PHONY: uninstall
