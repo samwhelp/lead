@@ -6,6 +6,9 @@ SOURCE_CONFIG_DIR_PATH=./config
 ### ~/.config
 TARGET_CONFIG_DIR_PATH=$(HOME)/.config
 
+### ~/.config/autostart
+TARGET_AUTOSTART_DIR_PATH=$(TARGET_CONFIG_DIR_PATH)/autostart
+
 
 ## rofi
 ### ./config/rofi/config
@@ -25,6 +28,15 @@ LEAD_SOURCE_CONFIG_FILE_PATH=$(SOURCE_CONFIG_DIR_PATH)/lead/lead.conf
 LEAD_TARGET_CONFIG_DIR_PATH=$(TARGET_CONFIG_DIR_PATH)/lead
 ### ~/.config/lead/lead.conf
 LEAD_TARGET_CONFIG_FILE_PATH=$(LEAD_TARGET_CONFIG_DIR_PATH)/lead.conf
+
+
+## lxqt
+### ./config/autostart/lxqt-lead.desktop
+LEAD_SOURCE_AUTOSTART_FILE_PATH=$(SOURCE_CONFIG_DIR_PATH)/autostart/lxqt-lead.desktop
+
+### ~/.config/autostart/config
+LEAD_TARGET_AUTOSTART_FILE_PATH=$(TARGET_AUTOSTART_DIR_PATH)/lxqt-lead.desktop
+
 
 
 default: help
@@ -51,11 +63,11 @@ help:
 .PHONY: help
 
 
-install: rofi-config-install lead-config-install
+install: rofi-config-install lead-config-install lead-autostart-install
 .PHONY: install
 
 
-remove: rofi-config-remove lead-config-remove
+remove: rofi-config-remove lead-config-remove lead-autostart-remove
 .PHONY: remove
 
 
@@ -107,3 +119,20 @@ lead-start:
 lead-stop:
 	killall -9 lead
 .PHONY: lead-run
+
+
+
+
+lead-autostart-install: lead-autostart-dir
+	install -m 644 $(LEAD_SOURCE_AUTOSTART_FILE_PATH) $(LEAD_TARGET_AUTOSTART_FILE_PATH)
+.PHONY: lead-autostart-install
+
+
+lead-autostart-remove:
+	rm -f $(LEAD_TARGET_AUTOSTART_FILE_PATH)
+.PHONY: lead-autostart-remove
+
+
+lead-autostart-dir:
+	mkdir -p $(TARGET_AUTOSTART_DIR_PATH)
+.PHONY: lead-autostart-dir

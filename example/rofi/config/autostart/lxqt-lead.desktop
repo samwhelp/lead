@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Categories=System;Utility;
+TryExec=lead
+Exec=lead
+Icon=system-run
+Keywords=x;x11;hot-corners;
+OnlyShowIn=LXQt;
+X-LXQt-Module=true
+
+
+Name=Lead
+GenericName=Lead-Hot-Corners
+Comment=Hot Corner to launch Application
