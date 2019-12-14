@@ -15,6 +15,13 @@ $ make help
 ```
 
 
+## Install package (rofi)
+
+``` sh
+$ make prepare
+```
+
+
 ## Install config file (lead and rofi)
 
 ``` sh

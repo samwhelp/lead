@@ -54,6 +54,8 @@ help:
 	@echo $$ make
 	@echo $$ make help
 	@echo
+	@echo $$ make prepare
+	@echo
 	@echo $$ make install
 	@echo $$ make remove
 	@echo
@@ -61,6 +63,10 @@ help:
 	@echo $$ make stop
 
 .PHONY: help
+
+
+prepare: rofi-package-install
+.PHONY: prepare
 
 
 install: rofi-config-install lead-config-install lead-autostart-install
@@ -92,6 +98,11 @@ rofi-config-remove:
 rofi-config-dir:
 	mkdir -p $(ROFI_TARGET_CONFIG_DIR_PATH)
 .PHONY: rofi-config-dir
+
+
+rofi-package-install:
+	sudo apt-get install rofi
+.PHONY: rofi-package-install
 
 
 
