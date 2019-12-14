@@ -1,6 +1,9 @@
 
 # lead usage example - rofi
 
+## Develop Environment
+
+* Ubuntu 18.04
 
 ## Help
 
@@ -20,6 +23,8 @@ $ make help
 ``` sh
 $ make prepare
 ```
+
+* [rofi](https://packages.ubuntu.com/bionic/rofi)
 
 
 ## Install config file (lead and rofi)
